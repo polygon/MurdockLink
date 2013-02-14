@@ -14,7 +14,9 @@ from xplanectl.sinks.udpsink import UdpSink
 
 ip = '127.0.0.1'
 port = 40000
-
+#infile = '/dev/ttyACM0'          # Linux
+#infile = '/dev/cu.usbmodem1'     # OSX
+infile = 'example.log'
 
 
 def forward(packet, controller):
@@ -30,7 +32,7 @@ def main():
     target = UdpSink(ip, port)
     target.open()
     ctl = Controller(target)
-    s = Parser(FileSource('example.log'), partial(forward, controller=ctl))
+    s = Parser(FileSource(infile), partial(forward, controller=ctl))
     s.run()
     
 if __name__=='__main__':
