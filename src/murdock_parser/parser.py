@@ -32,7 +32,12 @@ class Parser(object):
         if res is None:
             return None
         else:
-            return self.Packet(*map(float, res.groups())) 
+            data = map(float, res.groups())
+            data[1] = (1.0 + data[1]) / 2.0
+            data[2] = -data[2]
+            data[3] = -data[3]
+            data[4] = -data[4]
+            return self.Packet(*data)
     
     def run(self):
         while self.stopping is False:
