@@ -46,7 +46,7 @@ class Packet(object):
         out = out + ',pressure:%.4f' % (self._pressure)
         out = out + ',height:%.4f' % (self._height)
         out = out + ',airspeed:%.4f' % (self._airspeed)
-        out = out + ',lat:%.4f,lon:%.4f' % (self._position[0], self._position[1])
+        out = out + ',lat:%.6f,lon:%.6f' % (self._position[0], self._position[1])
         return out
     
 class Controller(object):
