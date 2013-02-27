@@ -34,4 +34,4 @@ class PacketBuilder(object):
         return self.Entry(Entries.GEAR_BRAKES, [gear, wbrake, rbrake, lbrake] + 4*[-999.])
     
     def throttle_command(self, throttle=-999.):
-        return self.Entry(Entries.THROTTLE_COMMAND, [throttle] + 7*[-999.])
+        return self.Entry(Entries.THROTTLE_COMMAND, 4*[throttle] + 4*[-999.])
