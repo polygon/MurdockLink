@@ -3,11 +3,6 @@ Created on Feb 14, 2013
 
 @author: jan
 '''
-'''
-Created on Feb 14, 2013
-
-@author: jan
-'''
 
 from collections import namedtuple
 import re

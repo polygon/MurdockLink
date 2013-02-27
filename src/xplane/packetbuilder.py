@@ -31,7 +31,7 @@ class PacketBuilder(object):
         return self.Entry(Entries.JOYSTICK_CTRLS, [elev, ail, rudd] + 5*[-999.])
     
     def gear_brakes(self, gear=-999., wbrake=-999., rbrake=-999., lbrake=-999.):
-        return self.Entry(Entries.GEAR_BRAKES, [gear, wbrake, rbrake, lbrake] + 4*[999.])
+        return self.Entry(Entries.GEAR_BRAKES, [gear, wbrake, rbrake, lbrake] + 4*[-999.])
     
     def throttle_command(self, throttle=-999.):
-        return self.Entry(Entries.THROTTLE_COMMAND, [throttle] + 7*[999.])
+        return self.Entry(Entries.THROTTLE_COMMAND, [throttle] + 7*[-999.])

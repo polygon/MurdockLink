@@ -6,7 +6,7 @@ Created on Feb 14, 2013
 
 from time import sleep
 
-class FileSourceSink(object):
+class FileSource(object):
     delay = 0.5
     file = None
     
