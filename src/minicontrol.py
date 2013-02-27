@@ -17,7 +17,7 @@ from xplane.sinks.udpsink import UdpSink
 from xplane.sources.udpsource import UdpSource
 from xplane.parser import Parser as XplaneParser
 
-xplaneip = '127.0.0.1'
+xplaneip = '10.0.0.234'
 xplanetxport = 49000
 
 xplanerxport = 49003
@@ -68,14 +68,24 @@ def main():
     xplanesink.open()
     xctl = XplaneController(xplanesink)
     mp = MurdockParser(FileSource(infile, delay), partial(murdock_to_xplane, controller=xctl))
-    #mp.run() # Run the thread here later
+    mp.start()
+    print "Setup of Murdock to Xplane link"
     
     # Initialize the link from xplane to murdock
     xplanesrc = UdpSource(xplanerxport)
     xplanesrc.open()
     mctl = MurdockController(FileSink(outfile))
     xp = XplaneParser(xplanesrc, partial(xplane_to_murdock, murdockctl=mctl, xplanectl=xctl))
-    xp.run()
+    xp.start()
+    print "Setup of Xplane to Murdock link"
+    
+    print "Press Ctrl+C to abort"
+    
+    try:
+        while True:
+            pass
+    except KeyboardInterrupt:
+        pass
     
     
 if __name__=='__main__':
