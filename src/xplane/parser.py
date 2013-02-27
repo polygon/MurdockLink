@@ -53,6 +53,7 @@ class Parser(object):
         if self.thread is None:
             self.stopping = False
             self.thread = threading.Thread(target=self.run, name='XplaneParser')
+            self.thread.daemon = True
             self.thread.start()
             
     def stop(self):
